@@ -11,11 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by pkurl_000 on 09/20/2014.
+ * Created by Peter Kurlak on 09/20/2014.
  */
 public class ServerMain extends SimpleApplication {
 
-    private Server server_;
+    private Server _server;
 
     public static void main(String[] args) {
         AppSettings settings = new AppSettings(true);
@@ -36,8 +36,8 @@ public class ServerMain extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         try {
-            server_ = Network.createServer(7117);
-            server_.start();
+            _server = Network.createServer(7117);
+            _server.start();
         }
         catch (IOException ex) {
             Logger.getLogger(ServerMain.class.getName()).log(Level.SEVERE, "Cannot start server: {0}", ex);
@@ -50,6 +50,6 @@ public class ServerMain extends SimpleApplication {
     @Override
     public void destroy() {
         super.destroy();
-        server_.close();
+        _server.close();
     }
 }
